@@ -1,0 +1,327 @@
+<div class="section section-buttons">
+    <div class="container">
+        <form>
+            <div class="row">
+                <div class="col-sm-6">
+                    <h1>L Invoice</h1>
+                    <div class="form-group">
+                        <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                            data-bs-target="#inforModal">
+                            Your company details
+                        </button>
+                    </div>
+                    <div class="form-group">
+                        <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                            data-bs-target="#cilentModal">
+                            Your cilent details
+                        </button>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <h1>Invoice</h1>
+
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Invoice number" (focus)="focus=true"
+                            (blur)="focus=false" [(ngModel)]="data.invoiceNum">
+                    </div>
+                    <div class="form-group">
+                        <div class="input-group date" [ngClass]="{'input-group-focus':focus===true}">
+                            <input class="form-control" placeholder="yyyy-mm-dd" name="dp"
+                                [(ngModel)]="data.dateCreated" ngbDatepicker #d="ngbDatepicker" (click)="d.toggle()"
+                                (focus)="focus=true" (blur)="focus=false" />
+                            <div class="input-group-append">
+                                <span class="glyphicon glyphicon-calendar input-group-text">
+                                    <i class="fa fa-calendar" aria-hidden="true"></i>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="input-group date" [ngClass]="{'input-group-focus':focus===true}">
+                            <input class="form-control" placeholder="yyyy-mm-dd" name="dp" [(ngModel)]="data.dueDate"
+                                ngbDatepicker #d="ngbDatepicker" (click)="d.toggle()" (focus)="focus=true"
+                                (blur)="focus=false" />
+                            <div class="input-group-append">
+                                <span class="glyphicon glyphicon-calendar input-group-text">
+                                    <i class="fa fa-calendar" aria-hidden="true"></i>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6">
+                    <h3>Description</h3>
+                </div>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col-sm-6">
+                    <h3>Description of goods</h3>
+                </div>
+            </div>
+            <div class="row" *ngFor="let goods of data.goods; index as i">
+                <div class="col-sm-4">
+                    <input type="text" class="form-control" placeholder="Item" (focus)="focus=true" (blur)="focus=false"
+                        [(ngModel)]="goods.item">
+                </div>
+                <div class="col-sm-4">
+                    <input type="text" class="form-control" placeholder="Description" (focus)="focus=true"
+                        (blur)="focus=false" [(ngModel)]="goods.description">
+                </div>
+                <div class="col-sm-1">
+                    <input type="text" class="form-control" placeholder="Price" (focus)="focus=true"
+                        (blur)="focus=false" [(ngModel)]="goods.price">
+                </div>
+                <div class="col-sm-1">
+                    <input type="text" class="form-control" placeholder="Qty" (focus)="focus=true" (blur)="focus=false"
+                        [(ngModel)]="goods.qty">
+                </div>
+                <div class="col-sm-1">
+                    <input type="text" class="form-control" placeholder="Total" (focus)="focus=true"
+                        (blur)="focus=false" [(ngModel)]="goods.total">
+                </div>
+                <div class="col-sm-1">
+                    <button type="button" name="button" class="close" (click)="deleteGood(index)">
+                        <i class="fa fa-trash"></i>
+                    </button>
+                </div>
+            </div>
+            <br>
+            <div class="col-sm-6">
+                <button type="button" class="btn btn-primary btn-round" (click)="addGood()"> <i
+                        class="fa fa-plus"></i>Add good</button>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-6">
+                    <h3>Description of services</h3>
+                </div>
+            </div>
+            <div class="row" *ngFor="let services of data.services; index as i">
+                <div class="col-sm-4">
+                    <input type="text" class="form-control" placeholder="Item" (focus)="focus=true" (blur)="focus=false"
+                        [(ngModel)]="services.item">
+                </div>
+                <div class="col-sm-4">
+                    <input type="text" class="form-control" placeholder="Description" (focus)="focus=true"
+                        (blur)="focus=false" [(ngModel)]="services.description">
+                </div>
+                <div class="col-sm-1">
+                    <input type="text" class="form-control" placeholder="Rate" (focus)="focus=true"
+                        (blur)="focus=false" [(ngModel)]="services.rate">
+                </div>
+                <div class="col-sm-1">
+                    <input type="text" class="form-control" placeholder="Hours" (focus)="focus=true" (blur)="focus=false"
+                        [(ngModel)]="services.hours">
+                </div>
+                <div class="col-sm-1">
+                    <input type="text" class="form-control" placeholder="Total" (focus)="focus=true"
+                        (blur)="focus=false" [(ngModel)]="services.total">
+                </div>
+                <div class="col-sm-1">
+                    <button type="button" name="button" class="close" (click)="deleteSerive(index)">
+                        <i class="fa fa-trash"></i>
+                    </button>
+                </div>
+            </div>
+            <br>
+            <div class="col-sm-6">
+                <button type="button" class="btn btn-primary btn-round" (click)="addService()"> <i
+                        class="fa fa-plus"></i>Add services</button>
+            </div>
+
+            <hr>
+
+            <div class="col-sm-6">
+                <button type="button" class="btn btn-primary btn-round" (click)="previewData()">Preview</button>
+            </div>
+        </form>
+    </div>
+
+</div>
+
+
+<!-- The Modal -->
+<div class="modal" id="inforModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h3 class="modal-title" style="display: inline-block;">Add your information</h3>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+
+            <!-- Modal body -->
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <input type="text" class="form-control" placeholder="first name" (focus)="focus=true"
+                            (blur)="focus=false" [(ngModel)]="inf.firstName">
+                    </div>
+                    <div class="col-sm-6">
+                        <input type="text" class="form-control" placeholder="Last name" (focus)="focus=true"
+                            (blur)="focus=false" [(ngModel)]="inf.lastName">
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <input type="text" class="form-control" placeholder="Email Address" (focus)="focus=true"
+                            (blur)="focus=false" [(ngModel)]="inf.email">
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <input type="text" class="form-control" placeholder="Company Name" (focus)="focus=true"
+                            (blur)="focus=false" [(ngModel)]="inf.companyName">
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <input type="text" class="form-control" placeholder="Registration number" (focus)="focus=true"
+                            (blur)="focus=false" [(ngModel)]="inf.registrationNumber">
+                    </div>
+                    <div class="col-sm-6">
+                        <input type="text" class="form-control" placeholder="Website" (focus)="focus=true"
+                            (blur)="focus=false" [(ngModel)]="inf.website">
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <input type="text" class="form-control" placeholder="Address" (focus)="focus=true"
+                            (blur)="focus=false" [(ngModel)]="inf.address">
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col-sm-4">
+                        <input type="text" class="form-control" placeholder="Town / City" (focus)="focus=true"
+                            (blur)="focus=false" [(ngModel)]="inf.city">
+                    </div>
+                    <div class="col-sm-4">
+                        <input type="text" class="form-control" placeholder="State" (focus)="focus=true"
+                            (blur)="focus=false" [(ngModel)]="inf.state">
+                    </div>
+                    <div class="col-sm-4">
+                        <input type="text" class="form-control" placeholder="Zip / Postal Code" (focus)="focus=true"
+                            (blur)="focus=false" [(ngModel)]="inf.postalCode">
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <input type="text" class="form-control" placeholder="Country" (focus)="focus=true"
+                            (blur)="focus=false" [(ngModel)]="inf.country">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Modal footer -->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger">Save & Continue</button>
+                <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!-- The Modal -->
+<div class="modal" id="cilentModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h3 class="modal-title" style="display: inline-block;">Add new Contact</h3>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+
+            <!-- Modal body -->
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <input type="text" class="form-control" placeholder="Company Name" (focus)="focus=true"
+                            (blur)="focus=false" [(ngModel)]="cilent.companyName">
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <input type="text" class="form-control" placeholder="Registration number" (focus)="focus=true"
+                            (blur)="focus=false" [(ngModel)]="cilent.registrationNumber">
+                    </div>
+                    <div class="col-sm-6">
+                        <input type="text" class="form-control" placeholder="Website" (focus)="focus=true"
+                            (blur)="focus=false" [(ngModel)]="cilent.website">
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <input type="text" class="form-control" placeholder="Address" (focus)="focus=true"
+                            (blur)="focus=false" [(ngModel)]="cilent.address">
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col-sm-4">
+                        <input type="text" class="form-control" placeholder="Town / City" (focus)="focus=true"
+                            (blur)="focus=false" [(ngModel)]="cilent.city">
+                    </div>
+                    <div class="col-sm-4">
+                        <input type="text" class="form-control" placeholder="State" (focus)="focus=true"
+                            (blur)="focus=false" [(ngModel)]="cilent.state">
+                    </div>
+                    <div class="col-sm-4">
+                        <input type="text" class="form-control" placeholder="Zip / Postal Code" (focus)="focus=true"
+                            (blur)="focus=false" [(ngModel)]="cilent.postalCode">
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <input type="text" class="form-control" placeholder="Country" (focus)="focus=true"
+                            (blur)="focus=false" [(ngModel)]="cilent.country">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <h4>Contact details</h4>
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <input type="text" class="form-control" placeholder="first name" (focus)="focus=true"
+                            (blur)="focus=false" [(ngModel)]="cilent.firstName">
+                    </div>
+                    <div class="col-sm-6">
+                        <input type="text" class="form-control" placeholder="Last name" (focus)="focus=true"
+                            (blur)="focus=false" [(ngModel)]="cilent.lastName">
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <input type="text" class="form-control" placeholder="Email Address" (focus)="focus=true"
+                            (blur)="focus=false" [(ngModel)]="cilent.email">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Modal footer -->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger">Save & Continue</button>
+                <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
+            </div>
+
+        </div>
+    </div>
+</div>
