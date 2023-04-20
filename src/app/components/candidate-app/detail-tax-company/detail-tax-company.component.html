@@ -1,152 +1,156 @@
 <div class="section section-buttons" style="margin-top: 100px;">
     <div class="container" style="border: 1px solid #ccc;box-shadow: 3px 0px #ccc;
     min-height: 400px;width: 1000px;">
-        <form>
-            <div class="row">
-                <div class="col-sm-12" style="text-align: end;">
-                    <h2>Invoice</h2>
-                </div>
+
+        <div class="row">
+            <div class="col-sm-12" style="text-align: end;">
+                <h2>Invoice</h2>
             </div>
-            <div class="row">
-                <div class="col-sm-6">
-                    <div class="form-group" style="height: 150px;">
-                        <button type="button" class="btn btn-warning" style="width: 100%;height: 100%;text-align: left;" data-bs-toggle="modal"
-                            data-bs-target="#inforModal">
-                            {{ tmpInf ? tmpInf: "Your company details"}}
-                        </button>
-                    </div>
-                    <div class="form-group" style="height: 150px;">
-                        <button type="button" class="btn btn-warning" style="width: 100%;height: 100%;text-align: left;" data-bs-toggle="modal"
-                            data-bs-target="#cilentModal">
-                            
-                            {{tmpClient ? tmpClient : "Your cilent details"}}
-                        </button>
-                    </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="form-group" style="height: 150px;">
+                    <button type="button" class="btn btn-warning" style="width: 100%;height: 100%;text-align: left;"
+                        data-bs-toggle="modal" data-bs-target="#inforModal">
+                        {{ tmpInf ? tmpInf: "Your company details"}}
+                    </button>
                 </div>
-                <div class="col-sm-6">
-                    <div class="form-group" style="margin-top: 20px;
-                    height: 60px;">
-                        <input type="text" class="form-control" placeholder="Invoice number" (focus)="focus=true"
-                            (blur)="focus=false" [(ngModel)]="data.invoiceNum">
-                    </div>
-                    <div class="form-group" style="
-                    height: 60px;">
-                        <div class="input-group date" [ngClass]="{'input-group-focus':focus===true}">
-                            <input class="form-control" placeholder="yyyy-mm-dd" name="dp"
-                                [(ngModel)]="data.dateCreated" ngbDatepicker #d="ngbDatepicker" (click)="d.toggle()"
-                                (focus)="focus=true" (blur)="focus=false" />
-                            <div class="input-group-append">
-                                <span class="glyphicon glyphicon-calendar input-group-text">
-                                    <i class="fa fa-calendar" aria-hidden="true"></i>
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-group" style="
-                    height: 60px;">
-                        <div class="input-group date" [ngClass]="{'input-group-focus':focus===true}">
-                            <input class="form-control" placeholder="yyyy-mm-dd" name="dp2" [(ngModel)]="data.dueDate"
-                                ngbDatepicker #d2="ngbDatepicker" (click)="d2.toggle()" (focus)="focus=true"
-                                (blur)="focus=false" />
-                            <div class="input-group-append">
-                                <span class="glyphicon glyphicon-calendar input-group-text">
-                                    <i class="fa fa-calendar" aria-hidden="true"></i>
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-sm-6">
-                    <h3>Description</h3>
-                </div>
-            </div>
-            <hr>
-            <div class="row">
-                <div class="col-sm-6">
-                    <h3>Description of goods</h3>
-                </div>
-            </div>
-            <div class="row" *ngFor="let goods of data.goods; index as i">
-                <div class="col-sm-4">
-                    <input type="text" class="form-control" placeholder="Item" (focus)="focus=true" (blur)="focus=false"
-                        [(ngModel)]="goods.item">
-                </div>
-                <div class="col-sm-4">
-                    <input type="text" class="form-control" placeholder="Description" (focus)="focus=true"
-                        (blur)="focus=false" [(ngModel)]="goods.description">
-                </div>
-                <div class="col-sm-1">
-                    <input type="text" class="form-control" placeholder="Price" (focus)="focus=true"
-                        (blur)="focus=false" [(ngModel)]="goods.price">
-                </div>
-                <div class="col-sm-1">
-                    <input type="text" class="form-control" placeholder="Qty" (focus)="focus=true" (blur)="focus=false"
-                        [(ngModel)]="goods.qty">
-                </div>
-                <div class="col-sm-1">
-                    <input type="text" class="form-control" placeholder="Total" (focus)="focus=true"
-                        (blur)="focus=false" [(ngModel)]="goods.total">
-                </div>
-                <div class="col-sm-1">
-                    <button type="button" name="button" class="close" (click)="deleteGood(index)">
-                        <i class="fa fa-trash"></i>
+                <div class="form-group" style="height: 150px;">
+                    <button type="button" class="btn btn-warning" style="width: 100%;height: 100%;text-align: left;"
+                        data-bs-toggle="modal" data-bs-target="#cilentModal">
+
+                        {{tmpClient ? tmpClient : "Your cilent details"}}
                     </button>
                 </div>
             </div>
-            <br>
             <div class="col-sm-6">
-                <button type="button" class="btn btn-candidate btn-round" (click)="addGood()"> <i
-                        class="fa fa-plus"></i>Add good</button>
-            </div>
-
-            <div class="row">
-                <div class="col-sm-6">
-                    <h3>Description of services</h3>
+                <div class="form-group" style="margin-top: 20px;
+                    height: 60px;">
+                    <input type="text" class="form-control" placeholder="Invoice number" (focus)="focus=true"
+                        (blur)="focus=false" [(ngModel)]="data.invoiceNum">
+                </div>
+                <div class="form-group" style="
+                    height: 60px;">
+                    <div class="input-group date" [ngClass]="{'input-group-focus':focus===true}">
+                        <input class="form-control" placeholder="yyyy-mm-dd" name="dp" [(ngModel)]="data.dateCreated"
+                            ngbDatepicker #d="ngbDatepicker" (click)="d.toggle();logs()" (focus)="focus=true"
+                            (blur)="focus=false" />
+                        <div class="input-group-append">
+                            <span class="glyphicon glyphicon-calendar input-group-text">
+                                <i class="fa fa-calendar" aria-hidden="true"></i>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group" style="
+                    height: 60px;">
+                    <div class="input-group date" [ngClass]="{'input-group-focus':focus===true}">
+                        <input class="form-control" placeholder="yyyy-mm-dd" name="dp2" [(ngModel)]="data.dueDate"
+                            ngbDatepicker #d2="ngbDatepicker" (click)="d2.toggle()" (focus)="focus=true"
+                            (blur)="focus=false" />
+                        <div class="input-group-append">
+                            <span class="glyphicon glyphicon-calendar input-group-text">
+                                <i class="fa fa-calendar" aria-hidden="true"></i>
+                            </span>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div class="row" *ngFor="let services of data.services; index as i">
-                <div class="col-sm-4">
-                    <input type="text" class="form-control" placeholder="Item" (focus)="focus=true" (blur)="focus=false"
-                        [(ngModel)]="services.item">
-                </div>
-                <div class="col-sm-4">
-                    <input type="text" class="form-control" placeholder="Description" (focus)="focus=true"
-                        (blur)="focus=false" [(ngModel)]="services.description">
-                </div>
-                <div class="col-sm-1">
-                    <input type="text" class="form-control" placeholder="Rate" (focus)="focus=true" (blur)="focus=false"
-                        [(ngModel)]="services.rate">
-                </div>
-                <div class="col-sm-1">
-                    <input type="text" class="form-control" placeholder="Hours" (focus)="focus=true"
-                        (blur)="focus=false" [(ngModel)]="services.hours">
-                </div>
-                <div class="col-sm-1">
-                    <input type="text" class="form-control" placeholder="Total" (focus)="focus=true"
-                        (blur)="focus=false" [(ngModel)]="services.total">
-                </div>
-                <div class="col-sm-1">
-                    <button type="button" name="button" class="close" (click)="deleteSerive(index)">
-                        <i class="fa fa-trash"></i>
-                    </button>
-                </div>
-            </div>
-            <br>
+        </div>
+        <div class="row">
             <div class="col-sm-6">
-                <button type="button" class="btn btn-candidate btn-round" (click)="addService()"> <i
-                        class="fa fa-plus"></i>Add services</button>
+                <h3>Description</h3>
             </div>
-
-            <hr>
-
+        </div>
+        <hr>
+        <div class="row">
             <div class="col-sm-6">
-                <button type="button" class="btn btn-candidate btn-round" (click)="previewData()">Preview</button>
+                <h3>Description of goods</h3>
             </div>
-        </form>
+        </div>
+        <div class="row" *ngFor="let good of data.goods; index as i">
+            <div class="col-sm-4" style="margin-top: 10px;">
+                <input type="text" class="form-control" placeholder="Item"
+                    (focus)="focus=true" (blur)="focus=false" [(ngModel)]="good.item">
+            </div>
+            <div class="col-sm-4" style="margin-top: 10px;">
+                <input type="text"  class="form-control"
+                    placeholder="Description" (focus)="focus=true" (blur)="focus=false" [(ngModel)]="good.description">
+            </div>
+            <div class="col-sm-1" style="margin-top: 10px;">
+                <input type="text" class="form-control" placeholder="Price"
+                    (focus)="focus=true" (blur)="focus=false" [(ngModel)]="good.price">
+            </div>
+            <div class="col-sm-1" style="margin-top: 10px;">
+                <input type="text"  class="form-control" placeholder="Qty"
+                    (focus)="focus=true" (blur)="focus=false" [(ngModel)]="good.qty">
+            </div>
+            <div class="col-sm-1" style="margin-top: 10px;">
+                <input type="text" class="form-control" placeholder="Total"
+                    (focus)="focus=true" (blur)="focus=false" [(ngModel)]="good.total">
+            </div>
+            <div class="col-sm-1" style="margin-top: 10px;">
+                <button type="button" name="button" class="close" (click)="deleteGood(i)">
+                    <i class="fa fa-trash"></i>
+                </button>
+            </div>
+        </div>
+        <br>
+        <div class="col-sm-6">
+            <button type="button" class="btn btn-candidate btn-round" (click)="addGood()"> <i class="fa fa-plus"></i>Add
+                good</button>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-6">
+                <h3>Description of services</h3>
+            </div>
+        </div>
+        <div class="row" *ngFor="let services of data.services; index as i">
+            <div class="col-sm-4" style="margin-top: 10px;">
+                <input type="text" class="form-control" placeholder="Item" (focus)="focus=true" (blur)="focus=false"
+                    [(ngModel)]="services.item">
+            </div>
+            <div class="col-sm-4" style="margin-top: 10px;">
+                <input type="text" class="form-control" placeholder="Description" (focus)="focus=true"
+                    (blur)="focus=false" [(ngModel)]="services.description">
+            </div>
+            <div class="col-sm-1" style="margin-top: 10px;">
+                <input type="text" class="form-control" placeholder="Rate" (focus)="focus=true" (blur)="focus=false"
+                    [(ngModel)]="services.rate">
+            </div>
+            <div class="col-sm-1" style="margin-top: 10px;">
+                <input type="text" class="form-control" placeholder="Hours" (focus)="focus=true" (blur)="focus=false"
+                    [(ngModel)]="services.hours">
+            </div>
+            <div class="col-sm-1" style="margin-top: 10px;">
+                <input type="text" class="form-control" placeholder="Total" (focus)="focus=true" (blur)="focus=false"
+                    [(ngModel)]="services.total">
+            </div>
+            <div class="col-sm-1" style="margin-top: 10px;">
+                <button type="button" name="button" class="close" (click)="deleteService(i)">
+                    <i class="fa fa-trash"></i>
+                </button>
+            </div>
+        </div>
+        <br>
+        <div class="col-sm-6">
+            <button type="button" class="btn btn-candidate btn-round" (click)="addService()"> <i
+                    class="fa fa-plus"></i>Add services</button>
+        </div>
+
+        <hr>
+
+        <div class="col-sm-6">
+            <button type="button" class="btn btn-candidate btn-round" (click)="previewData()"
+                printSectionId="print-section" ngxPrint>Preview</button>
+        </div>
+
     </div>
 
+</div>
+<div id="print-section" style="visibility: hidden;position: fixed;">
+    <app-preview-file [dataComany]="data"></app-preview-file>
 </div>
 
 
@@ -231,7 +235,8 @@
 
             <!-- Modal footer -->
             <div class="modal-footer">
-                <button type="button" class="btn btn-danger" (click)="saveDataInf()"  data-bs-dismiss="modal">Save & Continue</button>
+                <button type="button" class="btn btn-danger" (click)="saveDataInf()" data-bs-dismiss="modal">Save &
+                    Continue</button>
                 <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
             </div>
 
@@ -325,7 +330,8 @@
 
             <!-- Modal footer -->
             <div class="modal-footer">
-                <button type="button" class="btn btn-danger" (click)="saveDataClient()" data-bs-dismiss="modal">Save & Continue</button>
+                <button type="button" class="btn btn-danger" (click)="saveDataClient()" data-bs-dismiss="modal">Save &
+                    Continue</button>
                 <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
             </div>
 

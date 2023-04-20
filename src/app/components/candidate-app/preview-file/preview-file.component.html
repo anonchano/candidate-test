@@ -1,0 +1,89 @@
+<div class="section section-buttons" style="margin-top: 100px;">
+    <div style="text-align: end;">
+        <div>
+            <h2>{{dataComany.inf.companyName}}</h2>
+        </div>
+        <div>
+            {{dataComany.inf.address}} {{dataComany.inf.city}} {{dataComany.inf.state}}  {{dataComany.inf.postalCode}} {{dataComany.inf.country}}
+        </div>
+        <div>
+            {{dataComany.inf.registrationNumber}}
+        </div>
+        <div>
+            {{dataComany.inf.email}}
+        </div>
+        <div>
+            {{dataComany.inf.website}}
+        </div>
+    </div>
+    <hr>
+    <div style="text-align: left">
+        <div>
+            Invoice issued for:
+        </div>
+        <div>
+            <h2> {{dataComany.cilent.firstName}} {{dataComany.cilent.lastName}}</h2>
+        </div>
+        <div>
+            {{dataComany.cilent.address}} {{dataComany.cilent.city}} {{dataComany.cilent.state}}  {{dataComany.cilent.postalCode}} {{dataComany.cilent.country}}
+        </div>
+        <div>
+            {{dataComany.cilent.registrationNumber}}
+        </div>
+        <div>
+            {{dataComany.cilent.email}}
+        </div>
+        <div>
+            {{dataComany.cilent.website}}
+        </div>
+    </div>
+    <div style="text-align: end;position: relative;
+    top: -90px;">
+        <div>
+            <h4> Invoice #: {{dataComany.invoiceNum}}</h4>
+        </div>
+        <div >
+            Payment Date:   {{dataComany.dateCreated.day}}/{{dataComany.dateCreated.month}}/{{dataComany.dateCreated.year}}
+        </div>
+        <div>
+            Invoice Date: {{dataComany.dueDate.day}}/{{dataComany.dueDate.month}}/{{dataComany.dueDate.year}}
+        </div>
+    </div>
+    <table class="table" style="width:100%;" cellspacing="0">
+        <tr style="border: 2px solid black;">
+            <th style="border: 2px solid black;">#</th>
+            <th style="border: 2px solid black;">Title</th>
+            <th style="border: 2px solid black;">Description</th>
+            <th style="border: 2px solid black;">Price</th>
+            <th style="border: 2px solid black;">Quantity</th>
+            <th style="border: 2px solid black;">Unit</th>
+            <th style="border: 2px solid black;">Total </th>
+        </tr>
+        <tbody *ngIf="dataComany.goods && dataComany.goods.length > 0">
+            <tr style="border: 2px solid black;" *ngFor="let goods of dataComany.goods; index as i">
+                <td style="border: 2px solid black;">{{i + 1}}</td>
+                <td style="border: 2px solid black;">{{goods.item}}</td>
+                <td style="border: 2px solid black;">{{goods.description}}</td>
+                <td style="border: 2px solid black;">{{goods.price}}</td>
+                <td style="border: 2px solid black;">{{goods.qty}}</td>
+                <td style="border: 2px solid black;">m2</td>
+                <td style="border: 2px solid black;">{{goods.total}}</td>
+            </tr>
+        </tbody>
+    </table>
+    <div style="position: absolute;left: 50%;;width:50%;margin-top: 20px;">
+        <hr>
+    </div>
+
+    <div style="text-align: end;margin-top: 150px;">
+        <div>
+            Total : 145,250.50 ALL
+        </div>
+        <div>
+            VAT: 20 %
+        </div>
+        <div>
+            SubTotal: 116,199.90 ALL
+        </div>
+    </div>
+</div>

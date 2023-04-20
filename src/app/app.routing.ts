@@ -10,6 +10,7 @@ import { LandingComponent } from './examples/landing/landing.component';
 import { NucleoiconsComponent } from './components/nucleoicons/nucleoicons.component';
 import { TaxCompanyComponent } from './components/candidate-app/tax-company/tax-company.component';
 import { DetailTaxCompanyComponent } from './components/candidate-app/detail-tax-company/detail-tax-company.component';
+import { PreviewFileComponent } from './components/candidate-app/preview-file/preview-file.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'tax-company', pathMatch: 'full' },
@@ -28,6 +29,10 @@ const routes: Routes = [
       {
         path: 'detail', // child route path
         component: DetailTaxCompanyComponent, // child route component that the router renders
+      },
+      {
+        path: 'preview', // child route path
+        component: PreviewFileComponent, // child route component that the router renders
       },
     ]
   },

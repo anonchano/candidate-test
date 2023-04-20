@@ -5,6 +5,7 @@ import { TaxService } from 'app/service/tax.service';
 import { jsPDF } from "jspdf";
 import WebViewer, { WebViewerInstance } from '@pdftron/webviewer'
 import { Subject } from 'rxjs';
+import { now } from 'jquery';
 @Component({
   selector: 'app-detail-tax-company',
   templateUrl: './detail-tax-company.component.html',
@@ -27,8 +28,11 @@ export class DetailTaxCompanyComponent implements OnInit {
     dueDate: "",
     goods: [{}],
     services: [{}],
+    inf: {},
+    cilent: {}
   }
-  inf= {firstName: "",
+  inf = {
+    firstName: "",
     lastName: "",
     email: "",
     companyName: "",
@@ -38,8 +42,10 @@ export class DetailTaxCompanyComponent implements OnInit {
     city: "",
     state: "",
     postalCode: "",
-    country: "",};
-  cilent= {companyName: "",
+    country: "",
+  };
+  cilent = {
+    companyName: "",
     registrationNumber: "",
     website: "",
     address: "",
@@ -49,31 +55,70 @@ export class DetailTaxCompanyComponent implements OnInit {
     country: "",
     firstName: "",
     lastName: "",
-    email: "",};
-    tmpClient ="";
-  tmpInf= "";
+    email: "",
+  };
+  tmpClient = "";
+  tmpInf = "";
   doc = new jsPDF();
   pdfSrc = "https://vadimdez.github.io/ng2-pdf-viewer/assets/pdf-test.pdf";
 
   wvInstance?: WebViewerInstance;
   @ViewChild('viewer') viewer!: ElementRef;
-  
-  @Output() coreControlsEvent:EventEmitter<string> = new EventEmitter();
+
+  @Output() coreControlsEvent: EventEmitter<string> = new EventEmitter();
 
   private documentLoaded$: Subject<void>;
-  constructor(private taxService: TaxService, private router: Router, private modalService: NgbModal) { this.documentLoaded$ = new Subject<void>();}
+  constructor(private taxService: TaxService, private router: Router, private modalService: NgbModal) { this.documentLoaded$ = new Subject<void>(); }
 
   ngOnInit() {
-
-
+    this.data = {
+      invoiceNum: "001",
+      dateCreated: "",
+      dueDate: "",
+      goods: [{}],
+      services: [{}],
+      inf: {},
+      cilent: {}
+    }
+    this.data.inf = {
+      firstName: "inf1",
+      lastName: "inf2",
+      email: "inf3",
+      companyName: "inf4",
+      registrationNumber: "inf5",
+      website: "inf6",
+      address: "inf7",
+      city: "inf8",
+      state: "inf9",
+      postalCode: "inf10",
+      country: "inf11",
+    };
+    this.data.cilent = {
+      companyName: "cli1",
+      registrationNumber: "cli2",
+      website: "cli3",
+      address: "cli4",
+      city: "cli5",
+      state: "cli6",
+      postalCode: "cli7",
+      country: "cli8",
+      firstName: "cli9",
+      lastName: "cli10",
+      email: "cli11",
+    };
   }
 
   deleteGood(index: number) {
+    console.log(index)
     this.data.goods.splice(index, 1);
   }
 
   addGood() {
-    this.data.goods.push({});
+    this.data.goods.push({item: "",
+      description: "",
+      price: "",
+      qty: "",
+      total: "",});
   }
 
   deleteService(index: number) {
@@ -85,46 +130,8 @@ export class DetailTaxCompanyComponent implements OnInit {
   }
 
   previewData() {
-    // const doc = new jsPDF();
 
-    this.doc.text("Hello world!", 10, 10);
-    // this.doc.save("a4.pdf");
   }
-
-  // ngAfterViewInit(): void {
-
-  //   WebViewer({
-  //     path: '../lib',
-  //     initialDoc: '../src/assets/pdf/webviewer-demo-annotated.pdf'
-  //   }, this.viewer.nativeElement).then(instance => {
-  //     this.wvInstance = instance;
-
-  //     this.coreControlsEvent.emit(instance.UI.LayoutMode.Single);
-
-  //     const { documentViewer, Annotations, annotationManager } = instance.Core;
-
-  //     instance.UI.openElements(['notesPanel']);
-
-  //     documentViewer.addEventListener('annotationsLoaded', () => {
-  //       console.log('annotations loaded');
-  //     });
-
-  //     documentViewer.addEventListener('documentLoaded', () => {
-  //       this.documentLoaded$.next();
-  //       const rectangleAnnot = new Annotations.RectangleAnnotation({
-  //         PageNumber: 1,
-  //         // values are in page coordinates with (0, 0) in the top left
-  //         X: 100,
-  //         Y: 150,
-  //         Width: 200,
-  //         Height: 50,
-  //         Author: annotationManager.getCurrentUser()
-  //       });
-  //       annotationManager.addAnnotation(rectangleAnnot);
-  //       annotationManager.redrawAnnotation(rectangleAnnot);
-  //     });
-  //   })
-  // }
 
   saveDataClient() {
     this.tmpClient = "";
@@ -145,17 +152,21 @@ export class DetailTaxCompanyComponent implements OnInit {
   saveDataInf() {
     this.tmpInf = "";
     this.tmpInf =
-    this.inf.firstName + " " +
-    this.inf.lastName + " " +
-    this.inf.email + " " +
-    this.inf.companyName + " " +
-    this.inf.registrationNumber + " " +
-    this.inf.website + " " +
-    this.inf.address + " " +
-    this.inf.city + " " +
-    this.inf.state + " " +
-    this.inf.postalCode + " " +
-    this.inf.country
+      this.inf.firstName + " " +
+      this.inf.lastName + " " +
+      this.inf.email + " " +
+      this.inf.companyName + " " +
+      this.inf.registrationNumber + " " +
+      this.inf.website + " " +
+      this.inf.address + " " +
+      this.inf.city + " " +
+      this.inf.state + " " +
+      this.inf.postalCode + " " +
+      this.inf.country
+  }
+
+  logs(){
+    console.log(JSON.stringify( this.data.dateCreated));
   }
 
 

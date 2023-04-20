@@ -16,7 +16,8 @@ import { TaxService } from './service/tax.service';
 import { DetailTaxCompanyComponent } from './components/candidate-app/detail-tax-company/detail-tax-company.component';
 import { TaxCompanyComponent } from './components/candidate-app/tax-company/tax-company.component';
 import { PdfViewerModule } from 'ng2-pdf-viewer';
-
+import {NgxPrintModule} from 'ngx-print';
+import { PreviewFileComponent } from './components/candidate-app/preview-file/preview-file.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -24,6 +25,7 @@ import { PdfViewerModule } from 'ng2-pdf-viewer';
     FooterComponent,
     TaxCompanyComponent,
     DetailTaxCompanyComponent,
+    PreviewFileComponent
   ],
   imports: [
     BrowserModule,
@@ -35,6 +37,7 @@ import { PdfViewerModule } from 'ng2-pdf-viewer';
     AppRoutingModule,
     HttpClientModule,
     PdfViewerModule,
+    NgxPrintModule,
   ],
   exports: [],
   providers: [TaxService],
