@@ -1,0 +1,13 @@
+
+
+
+
+1. npm install
+    1.1 if look error use  npm install --legacy-peer-deps
+2. npm run ng serve
+
+
+
+tip
+1.npm install -g @angular/cli   //dont forget that!!
+2.install nodejs     //dont forget that!!
