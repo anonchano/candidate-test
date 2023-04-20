@@ -1,30 +1,36 @@
-<div class="section section-buttons">
-    <div class="container">
+<div class="section section-buttons" style="margin-top: 100px;">
+    <div class="container" style="border: 1px solid #ccc;box-shadow: 3px 0px #ccc;
+    min-height: 400px;width: 1000px;">
         <form>
             <div class="row">
+                <div class="col-sm-12" style="text-align: end;">
+                    <h2>Invoice</h2>
+                </div>
+            </div>
+            <div class="row">
                 <div class="col-sm-6">
-                    <h1>L Invoice</h1>
-                    <div class="form-group">
-                        <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                    <div class="form-group" style="height: 150px;">
+                        <button type="button" class="btn btn-warning" style="width: 100%;height: 100%;text-align: left;" data-bs-toggle="modal"
                             data-bs-target="#inforModal">
-                            Your company details
+                            {{ tmpInf ? tmpInf: "Your company details"}}
                         </button>
                     </div>
-                    <div class="form-group">
-                        <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                    <div class="form-group" style="height: 150px;">
+                        <button type="button" class="btn btn-warning" style="width: 100%;height: 100%;text-align: left;" data-bs-toggle="modal"
                             data-bs-target="#cilentModal">
-                            Your cilent details
+                            
+                            {{tmpClient ? tmpClient : "Your cilent details"}}
                         </button>
                     </div>
                 </div>
                 <div class="col-sm-6">
-                    <h1>Invoice</h1>
-
-                    <div class="form-group">
+                    <div class="form-group" style="margin-top: 20px;
+                    height: 60px;">
                         <input type="text" class="form-control" placeholder="Invoice number" (focus)="focus=true"
                             (blur)="focus=false" [(ngModel)]="data.invoiceNum">
                     </div>
-                    <div class="form-group">
+                    <div class="form-group" style="
+                    height: 60px;">
                         <div class="input-group date" [ngClass]="{'input-group-focus':focus===true}">
                             <input class="form-control" placeholder="yyyy-mm-dd" name="dp"
                                 [(ngModel)]="data.dateCreated" ngbDatepicker #d="ngbDatepicker" (click)="d.toggle()"
@@ -36,10 +42,11 @@
                             </div>
                         </div>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group" style="
+                    height: 60px;">
                         <div class="input-group date" [ngClass]="{'input-group-focus':focus===true}">
-                            <input class="form-control" placeholder="yyyy-mm-dd" name="dp" [(ngModel)]="data.dueDate"
-                                ngbDatepicker #d="ngbDatepicker" (click)="d.toggle()" (focus)="focus=true"
+                            <input class="form-control" placeholder="yyyy-mm-dd" name="dp2" [(ngModel)]="data.dueDate"
+                                ngbDatepicker #d2="ngbDatepicker" (click)="d2.toggle()" (focus)="focus=true"
                                 (blur)="focus=false" />
                             <div class="input-group-append">
                                 <span class="glyphicon glyphicon-calendar input-group-text">
@@ -90,7 +97,7 @@
             </div>
             <br>
             <div class="col-sm-6">
-                <button type="button" class="btn btn-primary btn-round" (click)="addGood()"> <i
+                <button type="button" class="btn btn-candidate btn-round" (click)="addGood()"> <i
                         class="fa fa-plus"></i>Add good</button>
             </div>
 
@@ -128,14 +135,14 @@
             </div>
             <br>
             <div class="col-sm-6">
-                <button type="button" class="btn btn-primary btn-round" (click)="addService()"> <i
+                <button type="button" class="btn btn-candidate btn-round" (click)="addService()"> <i
                         class="fa fa-plus"></i>Add services</button>
             </div>
 
             <hr>
 
             <div class="col-sm-6">
-                <button type="button" class="btn btn-primary btn-round" (click)="previewData()">Preview</button>
+                <button type="button" class="btn btn-candidate btn-round" (click)="previewData()">Preview</button>
             </div>
         </form>
     </div>
@@ -224,7 +231,7 @@
 
             <!-- Modal footer -->
             <div class="modal-footer">
-                <button type="button" class="btn btn-danger">Save & Continue</button>
+                <button type="button" class="btn btn-danger" (click)="saveDataInf()"  data-bs-dismiss="modal">Save & Continue</button>
                 <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
             </div>
 
@@ -318,7 +325,7 @@
 
             <!-- Modal footer -->
             <div class="modal-footer">
-                <button type="button" class="btn btn-danger">Save & Continue</button>
+                <button type="button" class="btn btn-danger" (click)="saveDataClient()" data-bs-dismiss="modal">Save & Continue</button>
                 <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
             </div>
 
@@ -326,7 +333,7 @@
     </div>
 </div>
 
-<div class="page">
+<!-- <div class="page">
     <div class="header">Angular sample</div>
     <div #viewer class="viewer"></div>
-  </div>
+  </div> -->

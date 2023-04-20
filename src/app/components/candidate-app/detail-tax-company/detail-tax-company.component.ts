@@ -50,6 +50,8 @@ export class DetailTaxCompanyComponent implements OnInit {
     firstName: "",
     lastName: "",
     email: "",};
+    tmpClient ="";
+  tmpInf= "";
   doc = new jsPDF();
   pdfSrc = "https://vadimdez.github.io/ng2-pdf-viewer/assets/pdf-test.pdf";
 
@@ -89,39 +91,71 @@ export class DetailTaxCompanyComponent implements OnInit {
     // this.doc.save("a4.pdf");
   }
 
-  ngAfterViewInit(): void {
+  // ngAfterViewInit(): void {
 
-    WebViewer({
-      path: '../lib',
-      initialDoc: '../src/assets/pdf/webviewer-demo-annotated.pdf'
-    }, this.viewer.nativeElement).then(instance => {
-      this.wvInstance = instance;
+  //   WebViewer({
+  //     path: '../lib',
+  //     initialDoc: '../src/assets/pdf/webviewer-demo-annotated.pdf'
+  //   }, this.viewer.nativeElement).then(instance => {
+  //     this.wvInstance = instance;
 
-      this.coreControlsEvent.emit(instance.UI.LayoutMode.Single);
+  //     this.coreControlsEvent.emit(instance.UI.LayoutMode.Single);
 
-      const { documentViewer, Annotations, annotationManager } = instance.Core;
+  //     const { documentViewer, Annotations, annotationManager } = instance.Core;
 
-      instance.UI.openElements(['notesPanel']);
+  //     instance.UI.openElements(['notesPanel']);
 
-      documentViewer.addEventListener('annotationsLoaded', () => {
-        console.log('annotations loaded');
-      });
+  //     documentViewer.addEventListener('annotationsLoaded', () => {
+  //       console.log('annotations loaded');
+  //     });
 
-      documentViewer.addEventListener('documentLoaded', () => {
-        this.documentLoaded$.next();
-        const rectangleAnnot = new Annotations.RectangleAnnotation({
-          PageNumber: 1,
-          // values are in page coordinates with (0, 0) in the top left
-          X: 100,
-          Y: 150,
-          Width: 200,
-          Height: 50,
-          Author: annotationManager.getCurrentUser()
-        });
-        annotationManager.addAnnotation(rectangleAnnot);
-        annotationManager.redrawAnnotation(rectangleAnnot);
-      });
-    })
+  //     documentViewer.addEventListener('documentLoaded', () => {
+  //       this.documentLoaded$.next();
+  //       const rectangleAnnot = new Annotations.RectangleAnnotation({
+  //         PageNumber: 1,
+  //         // values are in page coordinates with (0, 0) in the top left
+  //         X: 100,
+  //         Y: 150,
+  //         Width: 200,
+  //         Height: 50,
+  //         Author: annotationManager.getCurrentUser()
+  //       });
+  //       annotationManager.addAnnotation(rectangleAnnot);
+  //       annotationManager.redrawAnnotation(rectangleAnnot);
+  //     });
+  //   })
+  // }
+
+  saveDataClient() {
+    this.tmpClient = "";
+    this.tmpClient =
+      this.cilent.companyName + " " +
+      this.cilent.registrationNumber + " " +
+      this.cilent.website + " " +
+      this.cilent.address + " " +
+      this.cilent.city + " " +
+      this.cilent.state + " " +
+      this.cilent.postalCode + " " +
+      this.cilent.country + " " +
+      this.cilent.firstName + " " +
+      this.cilent.lastName + " " +
+      this.cilent.email;
+  }
+
+  saveDataInf() {
+    this.tmpInf = "";
+    this.tmpInf =
+    this.inf.firstName + " " +
+    this.inf.lastName + " " +
+    this.inf.email + " " +
+    this.inf.companyName + " " +
+    this.inf.registrationNumber + " " +
+    this.inf.website + " " +
+    this.inf.address + " " +
+    this.inf.city + " " +
+    this.inf.state + " " +
+    this.inf.postalCode + " " +
+    this.inf.country
   }
 
 
