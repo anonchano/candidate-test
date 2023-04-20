@@ -109,12 +109,12 @@
                         (blur)="focus=false" [(ngModel)]="services.description">
                 </div>
                 <div class="col-sm-1">
-                    <input type="text" class="form-control" placeholder="Rate" (focus)="focus=true"
-                        (blur)="focus=false" [(ngModel)]="services.rate">
+                    <input type="text" class="form-control" placeholder="Rate" (focus)="focus=true" (blur)="focus=false"
+                        [(ngModel)]="services.rate">
                 </div>
                 <div class="col-sm-1">
-                    <input type="text" class="form-control" placeholder="Hours" (focus)="focus=true" (blur)="focus=false"
-                        [(ngModel)]="services.hours">
+                    <input type="text" class="form-control" placeholder="Hours" (focus)="focus=true"
+                        (blur)="focus=false" [(ngModel)]="services.hours">
                 </div>
                 <div class="col-sm-1">
                     <input type="text" class="form-control" placeholder="Total" (focus)="focus=true"
@@ -325,3 +325,8 @@
         </div>
     </div>
 </div>
+
+<div class="page">
+    <div class="header">Angular sample</div>
+    <div #viewer class="viewer"></div>
+  </div>

@@ -1,48 +1,59 @@
 <div class="section section-buttons">
-    <div class="container">
+    <div class="container" style="border: 1px solid #ccc;box-shadow: 3px 0px #ccc;
+    min-height: 400px;width: 750px;">
         <div class="tim-title" style="text-align: center;">
-            <h3>Please Enter Your Company Tax ID</h3>
+            <h3 class="heading">Please Enter Your Company Tax ID</h3>
         </div>
-        <div class="row">
+        <div class="row d-flex justify-content-center">
             <div class="col-sm-6">
-                <div class="form-group">
-                    <input type="text" class="form-control" placeholder="Tax ID 13 digits">
-                    <button type="button" name="button" class="close" (click)="searchTaxCompany()">
+                <div class="form-group" style="display: flex;">
+                    <input type="text" [maxLength]="13" class="form-control" placeholder="Tax ID 13 digits"
+                        [(ngModel)]="taxCompanyId" (keydown)="keyEnter($event)">
+                    <button type="button" name="button" class="close" style="padding-left: 10px;"
+                        (click)="searchTaxCompany()">
                         <i class="nc-icon nc-zoom-split"></i>
                     </button>
                 </div>
             </div>
         </div>
-        <div class="row" *ngIf="data">
+        <div class="row d-flex justify-content-center" *ngIf="data">
             <div class="col-sm-6">
                 <div class="form-group">
-                    Company Info :
+                    <h4> Company Info :</h4>
                 </div>
                 <div class="form-group">
-                    Tax ID : {{data?.nid || ""}}
+                    <h5 style="display: inline;"> Tax ID :</h5> {{data?.nid || ""}}
                 </div>
                 <div class="form-group">
-                    CompanyName : {{data?.firstName || ""}}
+                    <h5 style="display: inline;"> CompanyName :</h5> {{data?.firstName || ""}}
                 </div>
-                <div class="form-group">
-                    Company Address : {{data?.addressInformation?.addNo || ""}} {{data?.addressInformation?.floorNo ||
-                    ""}} {{data?.addressInformation?.ampName || ""}}  {{data?.addressInformation?.soiName || ""}}
+                <div class="form-group" style="display: inline-block;">
+                    <h5 style="display: inline;">Company Address :</h5> {{data?.addressInformation?.addNo || ""}}
+                    {{data?.addressInformation?.floorNo ||
+                    ""}} {{data?.addressInformation?.ampName || ""}} {{data?.addressInformation?.soiName || ""}}
                     {{data?.addressInformation?.tamName || ""}} {{data?.addressInformation?.provName || ""}}
-                    {{data?.addressInformation?.postCode || ""}}  {{data?.addressInformation?.telNo || ""}}
+                    {{data?.addressInformation?.postCode || ""}} {{data?.addressInformation?.telNo || ""}}
                 </div>
             </div>
         </div>
-        <div class="row">
-            <div class="col-sm-6 col-lg-3">
+        <div class="row d-flex justify-content-center" *ngIf="(!data || data.length == 0 ) && actionSearch">
+            ไม่พบข้อมูล
+        </div>
+        <div class="row d-flex justify-content-center">
+            <div class="col-sm-6">
                 <div class="form-check">
                     <label class="form-check-label">
-                        <input class="form-check-input" type="checkbox" value="" [disabled]="!data">
+                        <input class="form-check-input" type="checkbox" value="" [disabled]="!data"
+                            [(ngModel)]="checkboxComplete">
                         ยืนยันข้อมูลถูกต้อง กดปุ่ม Next เพื่อไปยังขั้นตอนต่อไป
                         <span class="form-check-sign"></span>
                     </label>
                 </div>
-                <button type="button" class="btn btn-primary btn-round" [disabled]="!data" (click)="nextStep()">Next</button>
             </div>
+        </div>
+        <div class="col-sm-12" style="text-align: center;">
+            <button type="button" class="btn btn-outline-candidate btn-round" [disabled]="!checkboxComplete"
+                (click)="nextStep()">Next</button>
         </div>
     </div>
 </div>

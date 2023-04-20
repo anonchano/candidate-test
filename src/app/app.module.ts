@@ -15,6 +15,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { TaxService } from './service/tax.service';
 import { DetailTaxCompanyComponent } from './components/candidate-app/detail-tax-company/detail-tax-company.component';
 import { TaxCompanyComponent } from './components/candidate-app/tax-company/tax-company.component';
+import { PdfViewerModule } from 'ng2-pdf-viewer';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import { TaxCompanyComponent } from './components/candidate-app/tax-company/tax-
     ExamplesModule,
     AppRoutingModule,
     HttpClientModule,
+    PdfViewerModule,
   ],
   exports: [],
   providers: [TaxService],
