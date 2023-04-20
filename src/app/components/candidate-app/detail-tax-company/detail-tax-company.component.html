@@ -17,9 +17,9 @@
                 </div>
                 <div class="form-group" style="height: 150px;">
                     <button type="button" class="btn btn-warning" style="width: 100%;height: 100%;text-align: left;"
-                        data-bs-toggle="modal" data-bs-target="#cilentModal">
+                        data-bs-toggle="modal" data-bs-target="#clientModal">
 
-                        {{tmpClient ? tmpClient : "Your cilent details"}}
+                        {{tmpClient ? tmpClient : "Your client details"}}
                     </button>
                 </div>
             </div>
@@ -150,7 +150,7 @@
 
 </div>
 <div id="print-section" style="visibility: hidden;position: fixed;">
-    <app-preview-file [dataComany]="data"></app-preview-file>
+    <app-preview-file [dataComany]="data" [dataInf]="inf" [dataClient]="client"></app-preview-file>
 </div>
 
 
@@ -245,7 +245,7 @@
 </div>
 
 <!-- The Modal -->
-<div class="modal" id="cilentModal">
+<div class="modal" id="clientModal">
     <div class="modal-dialog">
         <div class="modal-content">
 
@@ -260,47 +260,47 @@
                 <div class="row">
                     <div class="col-sm-12">
                         <input type="text" class="form-control" placeholder="Company Name" (focus)="focus=true"
-                            (blur)="focus=false" [(ngModel)]="cilent.companyName">
+                            (blur)="focus=false" [(ngModel)]="client.companyName">
                     </div>
                 </div>
                 <br>
                 <div class="row">
                     <div class="col-sm-6">
                         <input type="text" class="form-control" placeholder="Registration number" (focus)="focus=true"
-                            (blur)="focus=false" [(ngModel)]="cilent.registrationNumber">
+                            (blur)="focus=false" [(ngModel)]="client.registrationNumber">
                     </div>
                     <div class="col-sm-6">
                         <input type="text" class="form-control" placeholder="Website" (focus)="focus=true"
-                            (blur)="focus=false" [(ngModel)]="cilent.website">
+                            (blur)="focus=false" [(ngModel)]="client.website">
                     </div>
                 </div>
                 <br>
                 <div class="row">
                     <div class="col-sm-12">
                         <input type="text" class="form-control" placeholder="Address" (focus)="focus=true"
-                            (blur)="focus=false" [(ngModel)]="cilent.address">
+                            (blur)="focus=false" [(ngModel)]="client.address">
                     </div>
                 </div>
                 <br>
                 <div class="row">
                     <div class="col-sm-4">
                         <input type="text" class="form-control" placeholder="Town / City" (focus)="focus=true"
-                            (blur)="focus=false" [(ngModel)]="cilent.city">
+                            (blur)="focus=false" [(ngModel)]="client.city">
                     </div>
                     <div class="col-sm-4">
                         <input type="text" class="form-control" placeholder="State" (focus)="focus=true"
-                            (blur)="focus=false" [(ngModel)]="cilent.state">
+                            (blur)="focus=false" [(ngModel)]="client.state">
                     </div>
                     <div class="col-sm-4">
                         <input type="text" class="form-control" placeholder="Zip / Postal Code" (focus)="focus=true"
-                            (blur)="focus=false" [(ngModel)]="cilent.postalCode">
+                            (blur)="focus=false" [(ngModel)]="client.postalCode">
                     </div>
                 </div>
                 <br>
                 <div class="row">
                     <div class="col-sm-12">
                         <input type="text" class="form-control" placeholder="Country" (focus)="focus=true"
-                            (blur)="focus=false" [(ngModel)]="cilent.country">
+                            (blur)="focus=false" [(ngModel)]="client.country">
                     </div>
                 </div>
                 <div class="row">
@@ -312,18 +312,18 @@
                 <div class="row">
                     <div class="col-sm-6">
                         <input type="text" class="form-control" placeholder="first name" (focus)="focus=true"
-                            (blur)="focus=false" [(ngModel)]="cilent.firstName">
+                            (blur)="focus=false" [(ngModel)]="client.firstName">
                     </div>
                     <div class="col-sm-6">
                         <input type="text" class="form-control" placeholder="Last name" (focus)="focus=true"
-                            (blur)="focus=false" [(ngModel)]="cilent.lastName">
+                            (blur)="focus=false" [(ngModel)]="client.lastName">
                     </div>
                 </div>
                 <br>
                 <div class="row">
                     <div class="col-sm-12">
                         <input type="text" class="form-control" placeholder="Email Address" (focus)="focus=true"
-                            (blur)="focus=false" [(ngModel)]="cilent.email">
+                            (blur)="focus=false" [(ngModel)]="client.email">
                     </div>
                 </div>
             </div>

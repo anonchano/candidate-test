@@ -1,19 +1,19 @@
 <div class="section section-buttons" style="margin-top: 100px;">
     <div style="text-align: end;">
         <div>
-            <h2>{{dataComany.inf.companyName}}</h2>
+            <h2>{{dataInf.companyName}}</h2>
         </div>
         <div>
-            {{dataComany.inf.address}} {{dataComany.inf.city}} {{dataComany.inf.state}}  {{dataComany.inf.postalCode}} {{dataComany.inf.country}}
+            {{dataInf.address}} {{dataInf.city}} {{dataInf.state}}  {{dataInf.postalCode}} {{dataInf.country}}
         </div>
         <div>
-            {{dataComany.inf.registrationNumber}}
+            {{dataInf.registrationNumber}}
         </div>
         <div>
-            {{dataComany.inf.email}}
+            {{dataInf.email}}
         </div>
         <div>
-            {{dataComany.inf.website}}
+            {{dataInf.website}}
         </div>
     </div>
     <hr>
@@ -22,19 +22,19 @@
             Invoice issued for:
         </div>
         <div>
-            <h2> {{dataComany.cilent.firstName}} {{dataComany.cilent.lastName}}</h2>
+            <h2> {{dataClient.firstName}} {{dataClient.lastName}}</h2>
         </div>
         <div>
-            {{dataComany.cilent.address}} {{dataComany.cilent.city}} {{dataComany.cilent.state}}  {{dataComany.cilent.postalCode}} {{dataComany.cilent.country}}
+            {{dataClient.address}} {{dataClient.city}} {{dataClient.state}}  {{dataClient.postalCode}} {{dataClient.country}}
         </div>
         <div>
-            {{dataComany.cilent.registrationNumber}}
+            {{dataClient.registrationNumber}}
         </div>
         <div>
-            {{dataComany.cilent.email}}
+            {{dataClient.email}}
         </div>
         <div>
-            {{dataComany.cilent.website}}
+            {{dataClient.website}}
         </div>
     </div>
     <div style="text-align: end;position: relative;
@@ -77,13 +77,21 @@
 
     <div style="text-align: end;margin-top: 150px;">
         <div>
-            Total : 145,250.50 ALL
+            Total : {{sumTotal}} ALL
         </div>
         <div>
             VAT: 20 %
         </div>
         <div>
-            SubTotal: 116,199.90 ALL
+            SubTotal: {{totalVat}} ALL
         </div>
     </div>
+    <div style="text-align: left;"><h2> Invoice Note</h2></div>
+    <div style="text-align: left; width: 50%;">
+        There are many variations of passages of Lorem Ipsum available, but the
+        majority have suffered alteration in some form, by injected humour, or
+        randomised words which don't look even slightly believable. If you are
+        going to use a passage of Lorem Ipsum, you need to be sure there isn't
+        anything embarrassing hidden in the middle of text. All the Lorem Ipsum
+        generators on the Internet tend to repeat predefined chunks as necessary.</div>
 </div>

@@ -8,7 +8,11 @@ import { TaxService } from 'app/service/tax.service';
 })
 export class PreviewFileComponent implements OnInit {
   @Input() dataComany: any;
-
+  @Input() dataInf: any;
+  @Input() dataClient: any;
+  sumTotal: 0;
+  totalVat: 0
+  
   simpleSlider = 40;
   doubleSlider = [20, 60];
   state_default: boolean = true;
@@ -22,6 +26,7 @@ export class PreviewFileComponent implements OnInit {
   constructor(private taxService: TaxService, private router: Router, private activatedRoute: ActivatedRoute) { }
 
   ngOnInit() {
+    
   }
 
 

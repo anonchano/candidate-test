@@ -29,7 +29,9 @@ export class DetailTaxCompanyComponent implements OnInit {
     goods: [{}],
     services: [{}],
     inf: {},
-    cilent: {}
+    client: {},
+    sumTotal: 0,
+    totalVat: 0,
   }
   inf = {
     firstName: "",
@@ -44,7 +46,7 @@ export class DetailTaxCompanyComponent implements OnInit {
     postalCode: "",
     country: "",
   };
-  cilent = {
+  client = {
     companyName: "",
     registrationNumber: "",
     website: "",
@@ -78,7 +80,9 @@ export class DetailTaxCompanyComponent implements OnInit {
       goods: [{}],
       services: [{}],
       inf: {},
-      cilent: {}
+      client: {},
+      sumTotal: 0,
+      totalVat: 0,
     }
     this.data.inf = {
       firstName: "inf1",
@@ -93,7 +97,7 @@ export class DetailTaxCompanyComponent implements OnInit {
       postalCode: "inf10",
       country: "inf11",
     };
-    this.data.cilent = {
+    this.data.client = {
       companyName: "cli1",
       registrationNumber: "cli2",
       website: "cli3",
@@ -114,11 +118,13 @@ export class DetailTaxCompanyComponent implements OnInit {
   }
 
   addGood() {
-    this.data.goods.push({item: "",
+    this.data.goods.push({
+      item: "",
       description: "",
       price: "",
       qty: "",
-      total: "",});
+      total: "",
+    });
   }
 
   deleteService(index: number) {
@@ -136,17 +142,17 @@ export class DetailTaxCompanyComponent implements OnInit {
   saveDataClient() {
     this.tmpClient = "";
     this.tmpClient =
-      this.cilent.companyName + " " +
-      this.cilent.registrationNumber + " " +
-      this.cilent.website + " " +
-      this.cilent.address + " " +
-      this.cilent.city + " " +
-      this.cilent.state + " " +
-      this.cilent.postalCode + " " +
-      this.cilent.country + " " +
-      this.cilent.firstName + " " +
-      this.cilent.lastName + " " +
-      this.cilent.email;
+      this.client.companyName + " " +
+      this.client.registrationNumber + " " +
+      this.client.website + " " +
+      this.client.address + " " +
+      this.client.city + " " +
+      this.client.state + " " +
+      this.client.postalCode + " " +
+      this.client.country + " " +
+      this.client.firstName + " " +
+      this.client.lastName + " " +
+      this.client.email;
   }
 
   saveDataInf() {
@@ -165,8 +171,8 @@ export class DetailTaxCompanyComponent implements OnInit {
       this.inf.country
   }
 
-  logs(){
-    console.log(JSON.stringify( this.data.dateCreated));
+  logs() {
+    console.log(JSON.stringify(this.data.dateCreated));
   }
 
 
